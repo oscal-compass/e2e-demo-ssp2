@@ -19,10 +19,10 @@ jobs:
         submodules: true
         fetch-depth: 2
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: 3.11
     - name: Install Trestle
       run: bash scripts/automation/install_trestle.sh
     - name: Automatically update content on push

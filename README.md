@@ -4,6 +4,8 @@ Repository to demo oscal based system security plan and agile authoring using co
 
 The [demo overview](https://github.com/oscal-compass/e2e-demo).
 
+See [Signed SSP releases](SIGNED_RELEASES.md) for package contents, configuration, and verification instructions.
+
 ______________________________________________________________________
 
 We are a Cloud Native Computing Foundation sandbox project.

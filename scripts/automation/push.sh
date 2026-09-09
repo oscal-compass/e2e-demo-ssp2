@@ -17,7 +17,7 @@ function github-branch-commit() {
         err "failed to get $GIT_BRANCH reference"
         return 1
     fi
-    if [[ $head_ref != $branch_ref ]]; then
+    if [[ $head_ref != "$branch_ref" ]]; then
         msg "HEAD ref ($head_ref) does not match $GIT_BRANCH ref ($branch_ref)"
         msg "someone may have pushed new commits before this build cloned the repo"
         return 0
@@ -60,7 +60,7 @@ function github-branch-commit() {
     
     local remote=origin
     if [[ $GITHUB_TOKEN ]]; then
-        remote=https://$GITHUB_TOKEN@github.com/oscal-compass/e2e-demo-cac-profile-cis
+        remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
     fi
     if [[ $GIT_BRANCH != main ]] && [[ $GIT_BRANCH != develop ]]; then
         msg "not pushing updates to branch $GIT_BRANCH"

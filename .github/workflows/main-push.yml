@@ -18,14 +18,21 @@ jobs:
         submodules: true
         fetch-depth: 0
         token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
+        python-version: 3.11
     - name: Install Trestle
       run: bash scripts/automation/install_trestle.sh
     - name: Release
-      run: source scripts/automation/release.sh
+      run: bash scripts/automation/release.sh
+    - name: Publish signed SSP package
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SSP_SIGNING_PRIVATE_KEY: ${{ secrets.SSP_SIGNING_PRIVATE_KEY }}
+        SSP_SIGNING_KEY_PASSWORD: ${{ secrets.SSP_SIGNING_KEY_PASSWORD }}
+        SSP_SIGNING_PUBLIC_KEY: ${{ secrets.SSP_SIGNING_PUBLIC_KEY }}
+      run: bash scripts/automation/publish_signed_ssp_package.sh
     - name: Push the changes
       run: bash scripts/automation/push.sh
   merge-main-to-develop:

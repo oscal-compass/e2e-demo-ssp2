@@ -9,7 +9,7 @@
     },
     "imports": [
       {
-        "href": "catalogs/NIST_800-53_rev5/catalog.json",
+        "href": "trestle://catalogs/NIST_800-53_rev5/catalog.json",
         "include-controls": [
           {
             "with-ids": [
@@ -249,8 +249,7 @@
         {
           "param-id": "sc-08.01_odp"
         }
-      ],
-      "alters": []
+    ]
     }
   }
 }
